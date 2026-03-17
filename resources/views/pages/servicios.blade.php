@@ -17,31 +17,12 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            @php
-            $services = [
-                ['img'=>'consulta_general.jpg','title'=>'Consulta General','desc'=>'Revisión completa del estado de salud de tu mascota con diagnóstico y recomendaciones personalizadas.','items'=>['Examen físico completo','Diagnóstico de enfermedades','Plan de tratamiento']],
-                ['img'=>'cirugia.jpeg','title'=>'Cirugía','desc'=>'Procedimientos quirúrgicos con el equipo de cirujanos y los mejores estándares de seguridad.','items'=>['Cirugías de tejidos blandos','Anestesia general','Cirugías ortopédicas']],
-                ['img'=>'vacunacion.jpg','title'=>'Vacunación','desc'=>'Programa completo de vacunación para proteger a tu mascota de enfermedades infecciosas.','items'=>['Vacunas para perros y gatos','Esquema de vacunación','Recordatorio de refuerzos']],
-                ['img'=>'urgencias.jpg','title'=>'Urgencias 24/7','desc'=>'Atención veterinaria de emergencia disponible las 24 horas del día, los 7 días de la semana.','items'=>['Atención inmediata','Equipos de emergencia','Cuidados intensivos']],
-                ['img'=>'laboratorio.jpg','title'=>'Laboratorio','desc'=>'Análisis clínicos y diagnóstico mediante equipos de última generación para resultados precisos.','items'=>['Análisis de sangre','Urianálisis','Diagnóstico por imagen']],
-                ['img'=>'odontologia.jpg','title'=>'Odontología','desc'=>'Cuidado dental especializado para mantener la salud bucal de tu mascota y prevenir enfermedades.','items'=>['Limpieza dental','Extracción de piezas','Tratamiento periodontal']],
-            ];
-            @endphp
-
-            @foreach($services as $s)
+            @foreach ($servicios as $serv)
             <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
-                <img src="{{ asset('img/'.$s['img']) }}" alt="{{ $s['title'] }}" class="w-full h-48 object-cover">
+                <img src="{{ asset('img/' . $serv->imagen) }}" alt="{{ $serv->nombre }}" class="w-full h-48 object-cover">
                 <div class="p-6">
-                    <h3 class="font-semibold text-slate-800 text-lg mb-2">{{ $s['title'] }}</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed mb-3">{{ $s['desc'] }}</p>
-                    <ul class="text-slate-500 text-sm space-y-1 mb-4">
-                        @foreach($s['items'] as $item)
-                        <li class="flex items-center gap-2">
-                            <svg class="w-3.5 h-3.5 text-teal-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                            {{ $item }}
-                        </li>
-                        @endforeach
-                    </ul>
+                    <h3 class="font-semibold text-slate-800 text-lg mb-2">{{ $serv->nombre }}</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-4">{{ $serv->descripcion }}</p>
                     <a href="{{ route('agendar-cita') }}" class="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-teal-400 hover:from-blue-600 hover:to-teal-500 text-white font-medium px-4 py-2.5 rounded-lg transition-all text-sm">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                         Agendar Cita
@@ -49,6 +30,7 @@
                 </div>
             </div>
             @endforeach
+
         </div>
     </div>
 </section>

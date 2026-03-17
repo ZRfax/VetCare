@@ -11,6 +11,13 @@
 </head>
 <body class="font-sans text-slate-700 bg-white">
     @include('partials.navbar')
+
+    @if (session('success'))
+    <div class="bg-teal-500 text-white text-sm text-center py-3 px-4">
+        {{ session('success') }}
+    </div>
+    @endif
+
     <main>
         @yield('content')
     </main>
